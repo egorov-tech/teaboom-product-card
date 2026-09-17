@@ -3,19 +3,21 @@
 Тестовое задание: верхний блок карточки товара интернет-магазина чая.
 Вёрстка без фреймворков — HTML5, SCSS, vanilla JS.
 
-**Демо:** https://egorov-tech.github.io/teaboom-product-card/
+**Опубликованная страница:** https://egorov-tech.github.io/teaboom-product-card/
 
 ## Запуск
 
-Достаточно открыть `index.html` в браузере. Единственная внешняя загрузка — шрифты
-Google Fonts; без сети страница корректно откатывается на системный гротеск.
-
-Если нужен локальный сервер (например, чтобы корректно отдавался WebP):
+Сборка не требуется — склонировать и открыть `index.html`:
 
 ```bash
-python3 -m http.server 8000
-# затем http://127.0.0.1:8000
+git clone https://github.com/egorov-tech/teaboom-product-card.git
+cd teaboom-product-card
+open index.html          # или python3 -m http.server 8000
 ```
+
+Единственная внешняя загрузка — шрифты Google Fonts; без сети страница откатывается
+на системный гротеск. Локальный сервер нужен, только если браузер не отдаёт WebP
+с `file://`.
 
 ## Сборка стилей
 
