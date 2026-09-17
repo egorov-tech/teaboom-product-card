@@ -1,0 +1,39 @@
+// Palette and type follow the live teaboom.ru theme: ink #202020, brand yellow
+// #f5d730, Oswald for display, Open Sans for text. Muted tones are darkened
+// until every text pair clears 4.5:1.
+
+:root {
+  --canvas: #fefcef;
+  --paper: #fff;
+  --ink: #1b1b1b;
+  --ink-soft: #4a4640;
+  --muted: #736b61;
+  --line: #e4e0d8;
+  --line-strong: #c7c1b4;
+  --brand: #f5d730;
+  --brand-lift: #ffe451;
+  --brand-deep: #e2c41c;
+  --tea: #2f5140;
+  --cut: #8f2d1a;
+  --cut-bg: #f7e9e4;
+
+  --font-display: "Oswald", "Helvetica Neue", Arial, sans-serif;
+  --font-text: "Open Sans", "Helvetica Neue", Arial, sans-serif;
+
+  --radius-sm: 3px;
+  --radius-md: 6px;
+
+  --step-1: 4px;
+  --step-2: 8px;
+  --step-3: 12px;
+  --step-4: 16px;
+  --step-5: 24px;
+  --step-6: 32px;
+  --step-7: 48px;
+  --step-8: 72px;
+
+  --ease: 180ms cubic-bezier(0.2, 0, 0.2, 1);
+}
+
+$bp-wide: 600px;
+$bp-split: 1060px;

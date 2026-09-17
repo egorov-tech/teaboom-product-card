@@ -1,0 +1,395 @@
+@use "tokens" as *;
+
+.masthead {
+  position: relative;
+  z-index: 1;
+  background: var(--paper);
+  border-bottom: 1px solid var(--line);
+
+  &__top,
+  &__bottom {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding-inline: clamp(16px, 4vw, 48px);
+  }
+
+  &__top {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    gap: var(--step-4) var(--step-6);
+    padding-block: var(--step-4);
+  }
+
+  &__contacts {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: baseline;
+    gap: var(--step-1) var(--step-5);
+    font-size: 14px;
+
+    // Phone screens: brand and cart share the first row, contacts drop below.
+    flex: 1 1 100%;
+    order: 3;
+
+    @media (min-width: $bp-wide) {
+      flex: 0 1 auto;
+      order: 0;
+      margin-left: auto;
+    }
+  }
+
+  &__phone {
+    font-weight: 700;
+    color: var(--ink);
+    text-decoration: none;
+    letter-spacing: 0.01em;
+
+    &:hover {
+      color: var(--tea);
+    }
+  }
+
+  &__mail {
+    color: var(--ink-soft);
+    text-decoration: none;
+
+    &:hover {
+      color: var(--tea);
+      text-decoration: underline;
+    }
+  }
+
+  &__hours {
+    flex-basis: 100%;
+    font-size: 12px;
+    color: var(--muted);
+  }
+
+  &__bottom {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    justify-content: space-between;
+    gap: var(--step-3) var(--step-5);
+    padding-block: var(--step-3);
+    border-top: 1px solid var(--line);
+  }
+}
+
+.brand {
+  display: inline-flex;
+  align-items: center;
+  gap: var(--step-3);
+  text-decoration: none;
+  color: inherit;
+
+  &__mark {
+    width: 46px;
+    height: 46px;
+  }
+
+  &__text {
+    display: flex;
+    flex-direction: column;
+  }
+
+  &__name {
+    font-family: var(--font-display);
+    font-weight: 600;
+    font-size: 22px;
+    line-height: 1.1;
+    letter-spacing: 0.01em;
+  }
+
+  &__tagline {
+    display: none;
+    font-size: 12px;
+    color: var(--muted);
+
+    @media (min-width: $bp-wide) {
+      display: block;
+    }
+  }
+}
+
+.cart {
+  display: inline-flex;
+  align-items: center;
+  gap: var(--step-2);
+  margin-left: auto;
+  padding: var(--step-2) var(--step-4);
+  border: 1px solid var(--line-strong);
+  border-radius: var(--radius-md);
+  font-size: 14px;
+  font-weight: 600;
+  color: var(--ink);
+  text-decoration: none;
+  transition: border-color var(--ease), background var(--ease);
+
+  &:hover {
+    border-color: var(--ink);
+    background: var(--brand);
+    color: var(--ink);
+  }
+
+  &__count {
+    min-width: 22px;
+    padding: 0 6px;
+    border-radius: 11px;
+    background: var(--brand);
+    color: var(--ink);
+    font-size: 12px;
+    font-variant-numeric: tabular-nums;
+    text-align: center;
+  }
+
+  &:hover &__count {
+    background: var(--paper);
+  }
+
+  &.is-filled {
+    border-color: var(--ink);
+  }
+
+  &.is-filled &__count {
+    animation: cart-bump 420ms cubic-bezier(0.3, 0, 0.2, 1);
+  }
+}
+
+// Copy of the product photo flying from the gallery into the cart.
+.fly {
+  position: fixed;
+  z-index: 20;
+  border-radius: var(--radius-md);
+  object-fit: cover;
+  pointer-events: none;
+}
+
+@keyframes cart-bump {
+  40% {
+    transform: scale(1.5);
+    background: var(--tea);
+    color: #fff;
+  }
+  to {
+    transform: scale(1);
+  }
+}
+
+.menu {
+  // Narrow screens scroll the menu sideways instead of hiding it behind a burger.
+  overflow-x: auto;
+  scrollbar-width: none;
+  margin-inline: calc(clamp(16px, 4vw, 48px) * -1);
+  padding-inline: clamp(16px, 4vw, 48px);
+
+  &::-webkit-scrollbar {
+    display: none;
+  }
+
+  @media (min-width: $bp-wide) {
+    margin-inline: 0;
+    padding-inline: 0;
+    overflow-x: visible;
+  }
+
+  &__list {
+    display: flex;
+    gap: var(--step-5);
+    margin: 0;
+    padding: 0;
+    list-style: none;
+    white-space: nowrap;
+
+    a {
+      display: inline-block;
+      padding: var(--step-2) 0;
+      font-family: var(--font-display);
+      font-weight: 500;
+      font-size: 14px;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      color: var(--ink);
+      text-decoration: none;
+      border-bottom: 2px solid transparent;
+      transition: border-color var(--ease), color var(--ease);
+
+      &:hover {
+        border-bottom-color: var(--brand);
+      }
+    }
+  }
+}
+
+.search {
+  display: flex;
+  flex: 1 1 260px;
+  max-width: 420px;
+
+  &__field {
+    flex: 1;
+    min-width: 0;
+    height: 42px;
+    padding: 0 var(--step-4);
+    font-family: inherit;
+    font-size: 14px;
+    color: var(--ink);
+    background: var(--paper);
+    border: 1px solid var(--line-strong);
+    border-right: 0;
+    border-radius: var(--radius-md) 0 0 var(--radius-md);
+
+    &::placeholder {
+      color: var(--muted);
+    }
+
+    &:focus-visible {
+      outline-offset: -2px;
+    }
+  }
+
+  &__submit {
+    height: 42px;
+    padding: 0 var(--step-5);
+    font-family: inherit;
+    font-size: 14px;
+    font-weight: 700;
+    color: var(--ink);
+    background: var(--brand);
+    border: 1px solid var(--brand-deep);
+    border-radius: 0 var(--radius-md) var(--radius-md) 0;
+    cursor: pointer;
+    transition: background var(--ease);
+
+    &:hover {
+      background: var(--brand-lift);
+    }
+  }
+}
+
+// Opening sequence: a tea leaf draws itself, then the page settles in.
+.steep {
+  position: fixed;
+  inset: 0;
+  z-index: 10;
+  display: grid;
+  place-items: center;
+  background: var(--canvas);
+  animation: steep-out 260ms ease 560ms both;
+
+  &__leaf {
+    width: clamp(72px, 9vw, 104px);
+    height: auto;
+    fill: none;
+    stroke-linecap: round;
+    animation: steep-leaf 620ms cubic-bezier(0.3, 0, 0.2, 1) both;
+  }
+
+  &__half,
+  &__vein,
+  &__rib {
+    stroke: var(--tea);
+    stroke-width: 2;
+    stroke-dasharray: 130;
+    stroke-dashoffset: 130;
+    animation: steep-draw 560ms ease forwards;
+  }
+
+  &__vein {
+    stroke: var(--brand-deep);
+    animation-delay: 120ms;
+  }
+
+  &__half--left {
+    animation-delay: 40ms;
+  }
+
+  &__half--right {
+    animation-delay: 100ms;
+  }
+
+  &__rib {
+    stroke-width: 1.5;
+    stroke-dasharray: 40;
+    stroke-dashoffset: 40;
+  }
+
+  &__rib--l1 {
+    animation-delay: 240ms;
+  }
+
+  &__rib--r1 {
+    animation-delay: 280ms;
+  }
+
+  &__rib--l2 {
+    animation-delay: 320ms;
+  }
+
+  &__rib--r2 {
+    animation-delay: 360ms;
+  }
+}
+
+.masthead,
+.page {
+  animation: settle 420ms ease 520ms both;
+}
+
+@keyframes steep-draw {
+  to {
+    stroke-dashoffset: 0;
+  }
+}
+
+@keyframes steep-leaf {
+  from {
+    transform: scale(0.82) rotate(-6deg);
+    opacity: 0;
+  }
+  to {
+    transform: scale(1) rotate(0);
+    opacity: 1;
+  }
+}
+
+@keyframes steep-out {
+  to {
+    opacity: 0;
+    visibility: hidden;
+  }
+}
+
+@keyframes settle {
+  from {
+    opacity: 0;
+    transform: translateY(12px);
+  }
+  to {
+    opacity: 1;
+    transform: none;
+  }
+}
+
+// Repeat visits in the same tab, and anyone who asked for less motion, skip it.
+.is-warm .steep,
+.is-warm .masthead,
+.is-warm .page {
+  animation: none;
+}
+
+.is-warm .steep {
+  display: none;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .steep {
+    display: none;
+  }
+
+  .masthead,
+  .page {
+    animation: none;
+  }
+}
