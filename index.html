@@ -106,17 +106,69 @@
         <div class="product__media">
           <figure class="shot">
             <picture>
-              <source srcset="assets/images/ananasovij-ulun.webp" type="image/webp">
+              <source data-gallery-webp srcset="assets/images/ananasovij-ulun.webp" type="image/webp">
               <img class="shot__image"
+                   data-gallery-main
                    src="assets/images/ananasovij-ulun.jpg"
                    alt="Ананасовый улун — китайский ароматизированный чай"
                    width="970" height="970" fetchpriority="high">
             </picture>
             <figcaption class="shot__caption">
-              <span class="shot__caption-key">Лист</span>
-              Крупный, изумрудного цвета, скрутка как у Те Гуань Инь
+              <span class="shot__caption-key" data-gallery-key>Лист</span>
+              <span data-gallery-caption>Крупный, изумрудного цвета, скрутка как у Те Гуань Инь</span>
             </figcaption>
           </figure>
+
+          <ul class="gallery" role="list" aria-label="Фотографии товара">
+            <li>
+              <button class="gallery__btn" type="button" aria-current="true"
+                      data-gallery-item
+                      data-src="assets/images/ananasovij-ulun.jpg"
+                      data-webp="assets/images/ananasovij-ulun.webp"
+                      data-alt="Ананасовый улун — сухой лист"
+                      data-key="Лист"
+                      data-caption="Крупный, изумрудного цвета, скрутка как у Те Гуань Инь">
+                <img class="gallery__thumb" src="assets/images/ananasovij-ulun.webp"
+                     alt="" width="120" height="120" loading="lazy">
+              </button>
+            </li>
+            <li>
+              <button class="gallery__btn" type="button"
+                      data-gallery-item
+                      data-src="assets/images/ananasovij-ulun-2.jpg"
+                      data-webp="assets/images/ananasovij-ulun-2.webp"
+                      data-alt="Ананасовый улун — крупный план листа"
+                      data-key="Крупно"
+                      data-caption="Скрутка и цвет листа крупным планом">
+                <img class="gallery__thumb" src="assets/images/ananasovij-ulun-2.webp"
+                     alt="" width="120" height="120" loading="lazy">
+              </button>
+            </li>
+            <li>
+              <button class="gallery__btn" type="button"
+                      data-gallery-item
+                      data-src="assets/images/ananasovij-ulun-3.jpg"
+                      data-webp="assets/images/ananasovij-ulun-3.webp"
+                      data-alt="Ананасовый улун — текстура листьев"
+                      data-key="Текстура"
+                      data-caption="Плотная скрутка и естественный блеск листа">
+                <img class="gallery__thumb" src="assets/images/ananasovij-ulun-3.webp"
+                     alt="" width="120" height="120" loading="lazy">
+              </button>
+            </li>
+            <li>
+              <button class="gallery__btn" type="button"
+                      data-gallery-item
+                      data-src="assets/images/ananasovij-ulun-4.jpg"
+                      data-webp="assets/images/ananasovij-ulun-4.webp"
+                      data-alt="Ананасовый улун — ракурс чая"
+                      data-key="Ракурс"
+                      data-caption="Ещё один ракурс сухого листа для сравнения">
+                <img class="gallery__thumb" src="assets/images/ananasovij-ulun-4.webp"
+                     alt="" width="120" height="120" loading="lazy">
+              </button>
+            </li>
+          </ul>
         </div>
 
         <div class="product__info">
@@ -219,6 +271,51 @@
             <div class="about__row"><dt>Хранение</dt><dd>В холодильнике</dd></div>
           </dl>
         </section>
+
+        <section class="reviews" aria-labelledby="reviews-title">
+          <div class="reviews__head">
+            <h2 class="reviews__title" id="reviews-title">Отзывы</h2>
+            <p class="reviews__score">
+              <b>4,8</b> из 5 · 12 отзывов
+            </p>
+          </div>
+
+          <ul class="reviews__list">
+            <li class="review">
+              <div class="review__meta">
+                <span class="review__author">Марина</span>
+                <span class="review__rating" aria-label="Оценка 5 из 5">★★★★★</span>
+              </div>
+              <p class="review__text">
+                Ананас чувствуется мягко, без химии. Настой светлый, пьём вечером —
+                фасовку 500 г взяли сразу, выгоднее.
+              </p>
+              <time class="review__date" datetime="2026-08-14">14 августа 2026</time>
+            </li>
+            <li class="review">
+              <div class="review__meta">
+                <span class="review__author">Игорь</span>
+                <span class="review__rating" aria-label="Оценка 5 из 5">★★★★★</span>
+              </div>
+              <p class="review__text">
+                Лист крупный, скрутка аккуратная. Завариваю 80–85 °C, как в карточке —
+                аромат раскрывается со второго пролива.
+              </p>
+              <time class="review__date" datetime="2026-07-02">2 июля 2026</time>
+            </li>
+            <li class="review">
+              <div class="review__meta">
+                <span class="review__author">Анна</span>
+                <span class="review__rating" aria-label="Оценка 4 из 5">★★★★☆</span>
+              </div>
+              <p class="review__text">
+                Вкус приятный, сладковатый. Для ежедневного чая чуть ярковат ананас,
+                но гостям заходит отлично.
+              </p>
+              <time class="review__date" datetime="2026-05-21">21 мая 2026</time>
+            </li>
+          </ul>
+        </section>
       </article>
     </main>
   </div>
@@ -230,8 +327,43 @@
     "name": "Ананасовый улун",
     "category": "Ароматизированный улун",
     "description": "Светлый фуцзяньский улун с ароматом ананаса и цукатами. Настой прозрачный, светло-янтарный.",
-    "image": "https://media.teaboom.ru/images/e4bb1618-fb80-41e2-8758-86f884ce095d.jpg",
+    "image": [
+      "https://media.teaboom.ru/images/e4bb1618-fb80-41e2-8758-86f884ce095d.jpg",
+      "https://media.teaboom.ru/images/e9f4b8f8-99d7-4739-858d-e6f0d00b8da0.jpg",
+      "https://media.teaboom.ru/images/f78385cf-799d-4b3f-a29d-23b8e4023b0b.jpg",
+      "https://media.teaboom.ru/images/bf4324bc-110e-4064-9ad6-a314ace3e4d8.jpg"
+    ],
     "brand": { "@type": "Brand", "name": "Teaboom" },
+    "aggregateRating": {
+      "@type": "AggregateRating",
+      "ratingValue": "4.8",
+      "reviewCount": "12",
+      "bestRating": "5",
+      "worstRating": "1"
+    },
+    "review": [
+      {
+        "@type": "Review",
+        "author": { "@type": "Person", "name": "Марина" },
+        "datePublished": "2026-08-14",
+        "reviewRating": { "@type": "Rating", "ratingValue": "5", "bestRating": "5" },
+        "reviewBody": "Ананас чувствуется мягко, без химии. Настой светлый, пьём вечером — фасовку 500 г взяли сразу, выгоднее."
+      },
+      {
+        "@type": "Review",
+        "author": { "@type": "Person", "name": "Игорь" },
+        "datePublished": "2026-07-02",
+        "reviewRating": { "@type": "Rating", "ratingValue": "5", "bestRating": "5" },
+        "reviewBody": "Лист крупный, скрутка аккуратная. Завариваю 80–85 °C, как в карточке — аромат раскрывается со второго пролива."
+      },
+      {
+        "@type": "Review",
+        "author": { "@type": "Person", "name": "Анна" },
+        "datePublished": "2026-05-21",
+        "reviewRating": { "@type": "Rating", "ratingValue": "4", "bestRating": "5" },
+        "reviewBody": "Вкус приятный, сладковатый. Для ежедневного чая чуть ярковат ананас, но гостям заходит отлично."
+      }
+    ],
     "offers": {
       "@type": "AggregateOffer",
       "priceCurrency": "RUB",

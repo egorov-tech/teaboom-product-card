@@ -86,7 +86,34 @@ try {
   const cartLink = document.querySelector("[data-cart]");
   const cartCount = document.querySelector("[data-cart-count]");
   const photo = root.querySelector(".shot__image");
+  const galleryWebp = root.querySelector("[data-gallery-webp]");
+  const galleryKey = root.querySelector("[data-gallery-key]");
+  const galleryCaption = root.querySelector("[data-gallery-caption]");
+  const galleryItems = Array.from(root.querySelectorAll("[data-gallery-item]"));
   const calmMotion = window.matchMedia("(prefers-reduced-motion: reduce)");
+
+  const showGalleryItem = (button) => {
+    if (!photo || !button) return;
+
+    const jpg = button.dataset.src;
+    const webp = button.dataset.webp;
+    const alt = button.dataset.alt || photo.alt;
+
+    if (galleryWebp && webp) galleryWebp.srcset = webp;
+    photo.src = jpg;
+    photo.alt = alt;
+
+    if (galleryKey) galleryKey.textContent = button.dataset.key || "";
+    if (galleryCaption) galleryCaption.textContent = button.dataset.caption || "";
+
+    galleryItems.forEach((item) => {
+      item.setAttribute("aria-current", item === button ? "true" : "false");
+    });
+  };
+
+  galleryItems.forEach((button) => {
+    button.addEventListener("click", () => showGalleryItem(button));
+  });
 
   // Send a copy of the photo along the arc into the cart icon.
   const flyToCart = () => {
